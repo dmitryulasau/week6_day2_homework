@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{url_for('index')}}"><img src="https://res.cloudinary.com/dulasau/image/upload/v1659488331/International_Pok%C3%A9mon_logo_nszsmg.svg" alt="Pokemon logo" width="100"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-link" href="https://www.pokemon.com/us/pokedex/" target="_blank">Names</a>
+            <a class="nav-link" href="{{url_for('index')}}">Home</a>
+            {% if current_user.is_anonymous %}
+            <a class="nav-link" href="{{url_for('login')}}">Login</a>
+            <a class="nav-link" href="{{url_for('register')}}">Register</a>
+            {% else %}
+            <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+            <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+            {% endif %}
+
+            
+           
+           
+            {# {% if current_user.is_anonymous %}
+                <a class="nav-link" href="{{url_for('login')}}">Login</a>
+                <a class="nav-link" href="{{url_for('register')}}">Register</a>
+            {% endif %}
+        </div>
+
+        {% if current_user.is_authenticated %}
+        <ul class="navbar-nav ms-auto align-items-center">
+            <a href='#'>
+                <img src="{{current_user.get_icon_url()}}" style="height:50px;">
+            </a>
+            <li class="nav-item">
+                <div class="row">
+                     <div class="col-12">
+                        <a href="{{url_for('edit_profile')}}">
+                            <i class="bi bi-gear-fill"></i>
+                        </a>
+                      </div>
+                      <div class="col-12">
+                         <a href="{{url_for('logout')}}">
+                             <i class="bi bi-box-arrow-right"></i>
+                         </a>
+                      </div>
+                </div>
+            </li>
+        </ul>
+        {% endif %} #}
+        
+        
+
+        </div>
+    </div>
+    </nav>

@@ -1,0 +1,90 @@
+{% extends "base.html.j2" %}
+
+{% block content %}
+
+<h1>Hello, {{ current_user.username }}!</h1>
+
+
+    
+    <form class="center" action="{{url_for('index')}}" method="POST">
+    {{form.hidden_tag()}}
+    <div class="mb-3">
+        {{form.name.label(class="form-label")}}
+        {{form.name(class="form-control")}}
+        {% for error in form.name.errors%}
+            <small style="color:red">{{error}}</small>
+        {% endfor %}
+    </div>
+    
+    <div class="catch">
+        {{form.submit(class="btn btn-danger")}}<br>
+         <small style="color:red">{{error}}</small>
+    </div>  
+    </form> 
+
+{% if info %}
+
+
+
+<div class="pokemon-stats">
+<table class="table-borderless table-striped table-hover table-Success mt-5">
+    <colgroup span="2"></colgroup>
+    <thead>
+        <tr>
+        <th colspan="2" scope="colgroup" class="thname"> 
+        {{info[0]['name'].upper()}}
+        </th>
+        <th> 
+        <img class="img-pokemon" src="{{info[0]['gif']}}" width="30">
+        </th>
+        </tr>
+        
+        <tr>
+        <th rowspan="5" scope="rowgroup"><div><img class="img-pokemon" src="{{info[0]['image']}}" width="200"></div>
+        </th>
+        </tr>
+
+
+        
+
+        <tr>
+        <th scope="row">Ability</th>
+        <td>
+        {{info[0]['ability'].upper()}}
+        </td>
+        </tr>
+
+        <tr>
+        <th scope="row">Defense</th>
+        <td>
+        {{info[0]['defense']}}
+        <img class="stats-icon" src="https://res.cloudinary.com/dulasau/image/upload/v1659485587/security_ed7uvc.png">
+        </td>
+        </tr>
+
+        <tr>
+        <th scope="row">Attack</th>
+        <td>
+        {{info[0]['attack']}}
+        <img class="stats-icon" src="https://res.cloudinary.com/dulasau/image/upload/v1659486213/sword_e5cibf.png">
+        </td>
+        </tr>
+
+        <tr>
+        <th scope="row">HP</th>
+        <td>
+        {{info[0]['hp']}}
+        <img class="stats-icon" src="https://res.cloudinary.com/dulasau/image/upload/v1659485587/heart_fsymzu.png">
+        </td>
+        </tr>
+
+       
+
+    </thead>
+<div>
+   
+
+    </table>
+{% endif %}
+
+{% endblock %}
