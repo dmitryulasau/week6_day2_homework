@@ -9,7 +9,7 @@ This project uses the information from [POKEAPI](https://pokeapi.co/)
 - to clone this repository:
 
   ```
-  git clone https://github.com/dmitryulasau/week6_day1_homework.git
+  git clone https://github.com/dmitryulasau/week6_day2_homework.git
   ```
 
 - (Windows users) to create a virtual environment enter in terminal:
