@@ -54,7 +54,7 @@ This project uses the information from [POKEAPI](https://pokeapi.co/)
   flask run
   ```
 
-## .flaskenv
+## .env
 
 ```
 FLASK_APP
