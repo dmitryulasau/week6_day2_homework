@@ -6,7 +6,7 @@ from app.models import User
 
 class FindPokemon(FlaskForm):
     name = StringField('ENTER POKEMON\'S NAME OR NUMBER', validators=[DataRequired()])
-    submit = SubmitField('CATCH HIM!')
+    submit = SubmitField('FIND POKEMON')
   
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])

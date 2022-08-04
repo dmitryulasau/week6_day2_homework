@@ -41,6 +41,9 @@ h1 {
 .catch {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
 }
 
 .form-label {
@@ -61,7 +64,8 @@ h1 {
 .pokemon-stats {
   display: flex;
   justify-content: center;
-  margin-top: 30%;
+  align-items: center;
+  margin-top: 26%;
 }
 
 .thname {
@@ -147,4 +151,55 @@ td {
 
 .reg-input {
   width: 400px;
+}
+
+.pokeball_icon {
+  width: 36px;
+  height: 36px;
+}
+
+.error {
+  font-size: 30px;
+}
+
+.pokeball {
+  display: block;
+}
+/* POKEBALL */
+.pokeball-catch {
+  transition: all 0.4s;
+}
+
+.pokeball-catch:hover {
+  transform: scale(1.3);
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.pcontainer:hover .middle {
+  opacity: 0.8;
+}
+
+.text {
+  background-color: #fcc419;
+  color: rgb(69, 118, 161);
+  font-size: 120px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 100000px;
+}
+
+.ball-catch {
+  outline: 0;
+  border: 0;
+  background-color: Transparent;
 }

@@ -11,23 +11,29 @@
     <div class="mb-3">
         {{form.name.label(class="form-label")}}
         {{form.name(class="form-control")}}
+        <div>
         {% for error in form.name.errors%}
             <small style="color:red">{{error}}</small>
         {% endfor %}
+        </div>
     </div>
     
     <div class="catch">
         {{form.submit(class="btn btn-danger")}}<br>
-         <small style="color:red">{{error}}</small>
+         <div class="error"><strong><small style="color:red">{{error}}</strong></small></div>
     </div>  
     </form> 
+
 
 {% if info %}
 
 
 
+
+
+
 <div class="pokemon-stats">
-<table class="table-borderless table-striped table-hover table-Success mt-5">
+<table class="table-borderless">
     <colgroup span="2"></colgroup>
     <thead>
         <tr>
@@ -43,9 +49,6 @@
         <th rowspan="5" scope="rowgroup"><div><img class="img-pokemon" src="{{info[0]['image']}}" width="200"></div>
         </th>
         </tr>
-
-
-        
 
         <tr>
         <th scope="row">Ability</th>
@@ -74,17 +77,49 @@
         <th scope="row">HP</th>
         <td>
         {{info[0]['hp']}}
-        <img class="stats-icon" src="https://res.cloudinary.com/dulasau/image/upload/v1659485587/heart_fsymzu.png">
+        <img class="stats-icon" src="https://res.cloudinary.com/dulasau/image/upload/v1659583844/heart_obpb3l.png">
         </td>
         </tr>
 
        
 
     </thead>
-<div>
+    </table>
+
+
+    <form method="POST" action="{{url_for('poke')}}">
+        
+            
+            <button type="submit" class="ball-catch"><a  href="{{url_for('poke')}}"><img class="pokeball-catch image" src="https://res.cloudinary.com/dulasau/image/upload/v1659576740/800px-Pokebola-pokeball-png-0_a7hjeg.png" width="100">
+    <div class="middle">
+    <div class="text">CATCH!</div>
+    </div>
+    
+
+    </div></a>
+       
+    </form>
+
+    <div class="pokeball pcontainer" >
+    
+    {# <a type="submit" href="{{url_for('poke')}}"><img class="pokeball-catch image" src="https://res.cloudinary.com/dulasau/image/upload/v1659576740/800px-Pokebola-pokeball-png-0_a7hjeg.png" width="100">
+    <div class="middle">
+    <div class="text">CATCH!</div>
+    </div>
+    </a>
+
+    </div> #}
+    
+    
+    
+    
+</div>
+
    
 
-    </table>
+    
+
+
 {% endif %}
 
 {% endblock %}

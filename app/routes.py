@@ -7,7 +7,7 @@ from .forms import FindPokemon, LoginForm
 import requests
 
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import Pokemon, User
 
 from app import db
 from app.forms import RegistrationForm
@@ -16,7 +16,7 @@ from app.forms import RegistrationForm
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    user = {'username': 'Kevin or Dylan'}
+    # user = {'username': 'Kevin or Dylan'}
     form = FindPokemon()
 
     if request.method =='POST':
@@ -26,11 +26,11 @@ def index():
         response = requests.get(url)
 
         if not response.ok:
-            error_message = "We had an Unexpected Error"
-            return render_template('index.html.j2', error=error_message)
+            error_message = "Please enter a valid name or number (1-905)"
+            return render_template('index.html.j2', error=error_message, form=form)
         if not response.json():
             error_message = "We don't have this Pokemon's name"
-            return render_template('index.html.j2', error=error_message)    
+            return render_template('index.html.j2', error=error_message, form=form)    
         data = response.json()
         
         pokemon_info = []
@@ -94,3 +94,17 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
    
     return render_template('user.html.j2', user=user)
+
+# 
+@app.route('/', methods=['GET', 'POST'])
+@login_required
+def poke():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        catched_pokemon = Pokemon(name = name, user_id = current_user.id)
+        catched_pokemon.save()
+        flash('CATCHED!', 'success')
+        return redirect(url_for('index'))
+    pokemons = current_user.followed_posts()
+    return render_template('index.html.j2', pokemons=pokemons)
+
